@@ -7,6 +7,18 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
+// PostgreSQL
+const { Client } = require('pg');
+const joinMonster = require('join-monster');
+
+const client = new Client({
+  host: "localhost",
+  user: "toggl",
+  password: "{YOUR_POSTGRES_PASSWORD}",
+  database: "{YOUR_POSTGRES_DATABASE}"
+})
+client.connect();
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const testRouter  = require('./routes/testAPI');
